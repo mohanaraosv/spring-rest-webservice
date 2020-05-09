@@ -5,8 +5,11 @@ import java.util.LinkedHashMap;
 import java.util.List;
 
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.reactive.function.client.WebClient;
 
 import com.mycompany.spring.rest.webservice.model.User;
+
+import reactor.core.Disposable;
 
 public class Testing {
 
@@ -70,6 +73,22 @@ public class Testing {
     }
 
     public static void main(final String args[]) {
+        WebClient webClient = WebClient.create("http://localhost:8080/sample");
+        Disposable result = webClient.get()
+                .uri(uriBuilder -> uriBuilder
+                        .path("/user/1")
+                        .build())
+                .retrieve()
+                .bodyToMono(User.class)
+                .subscribe(user -> {
+                    System.out.println("+++++++++++++++++++++++++++++++++USER DETAILS :++++++++++++++++++++++++++++++++++++++++++" + user);
+                });
+
+        System.out.println(result);
+
+    }
+
+    public static void crudalCalls() {
         listAllUsers();
         getUser();
         createUser();

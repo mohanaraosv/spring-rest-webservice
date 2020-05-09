@@ -11,21 +11,23 @@
   <description>Demo project for rest webservices using spring</description>
 
   <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <java.version>14</java.version>
     <lombok.version>1.18.10</lombok.version>
-    <lombok.maven.plugin.version>1.18.6.0</lombok.maven.plugin.version>
     <maven.compiler.plugin.version>3.8.1</maven.compiler.plugin.version>
-    <maven.surefire.plugin.version>3.0.0-M3</maven.surefire.plugin.version>
-    <mockito.junit.jupiter.version>3.1.0</mockito.junit.jupiter.version>
-    <junit.jupiter.version>5.5.2</junit.jupiter.version>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
     <springframework.version>5.2.6.RELEASE</springframework.version>
+    <logback.version>1.2.3</logback.version>
     <jackson.library>2.11.0</jackson.library>
     <maven.compiler.source>14</maven.compiler.source>
     <maven.compiler.target>14</maven.compiler.target>
-    
+
     <jetty.version>9.4.28.v20200408</jetty.version>
+    <jetty.reactive.httpclient.version>1.1.2</jetty.reactive.httpclient.version>
+    <javax.servlet.api.version>3.1.0</javax.servlet.api.version>
+    <reactor.spring.version>1.0.1.RELEASE</reactor.spring.version>
+    
+    <maven.war.plugin.version>3.2.3</maven.war.plugin.version>
   </properties>
 
   <dependencies>
@@ -51,6 +53,26 @@
       <version>3.1.0</version>
     </dependency>
     <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-webflux</artifactId>
+      <version>${springframework.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.projectreactor</groupId>
+      <artifactId>reactor-spring</artifactId>
+      <version>${reactor.spring.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.eclipse.jetty</groupId>
+      <artifactId>jetty-client</artifactId>
+      <version>${jetty.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>ch.qos.logback</groupId>
+      <artifactId>logback-classic</artifactId>
+      <version>${logback.version}</version>
+    </dependency>
+    <dependency>
       <groupId>com.fasterxml.jackson.core</groupId>
       <artifactId>jackson-databind</artifactId>
       <version>${jackson.library}</version>
@@ -61,29 +83,9 @@
       <version>${lombok.version}</version>
     </dependency>
     <dependency>
-      <groupId>org.mockito</groupId>
-      <artifactId>mockito-junit-jupiter</artifactId>
-      <version>${mockito.junit.jupiter.version}</version>
-      <scope>test</scope>
-    </dependency>
-
-    <dependency>
-      <groupId>org.junit.jupiter</groupId>
-      <artifactId>junit-jupiter</artifactId>
-      <version>${junit.jupiter.version}</version>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.junit.jupiter</groupId>
-      <artifactId>junit-jupiter-params</artifactId>
-      <version>${junit.jupiter.version}</version>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.junit.jupiter</groupId>
-      <artifactId>junit-jupiter-api</artifactId>
-      <version>${junit.jupiter.version}</version>
-      <scope>test</scope>
+      <groupId>org.eclipse.jetty</groupId>
+      <artifactId>jetty-reactive-httpclient</artifactId>
+      <version>${jetty.reactive.httpclient.version}</version>
     </dependency>
   </dependencies>
 
@@ -122,7 +124,7 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-war-plugin</artifactId>
-          <version>3.2.3</version>
+          <version>${maven.war.plugin.version}</version>
           <configuration>
             <warSourceDirectory>src/main/webapp</warSourceDirectory>
             <warName>spring-rest-webservice</warName>

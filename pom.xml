@@ -18,7 +18,7 @@
 
     <springframework.version>5.2.6.RELEASE</springframework.version>
     <logback.version>1.2.3</logback.version>
-    <jackson.library>2.11.0</jackson.library>
+    <jackson.library>2.12.7.1</jackson.library>
     <maven.compiler.source>14</maven.compiler.source>
     <maven.compiler.target>14</maven.compiler.target>
 

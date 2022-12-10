@@ -16,7 +16,7 @@
     <lombok.version>1.18.10</lombok.version>
     <maven.compiler.plugin.version>3.8.1</maven.compiler.plugin.version>
 
-    <springframework.version>5.2.6.RELEASE</springframework.version>
+    <springframework.version>6.0.0</springframework.version>
     <logback.version>1.2.3</logback.version>
     <jackson.library>2.11.0</jackson.library>
     <maven.compiler.source>14</maven.compiler.source>
